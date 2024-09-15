@@ -327,6 +327,15 @@ Finally, append the Table element to the "list_table_dom", where list_table_dom 
 */
 function display_Expenses(){
 
+  // Category-specific color mapping (customize as needed)
+  const categoryColors = {
+    'Food & Dining': 'red',
+    'Housing': 'blue',
+    'Transportation': 'green',
+    'Entertainment': 'purple',
+    'Other': 'orange' 
+  };
+
   if (list_array.length === 0) {
     alert("The list is empty. There are no Expenses to display.");
     return;
@@ -394,6 +403,7 @@ function display_Expenses(){
     var ExpenseCategoryCell = row.insertCell(3);
     var ExpenseAmountCell = row.insertCell(4);
     var ExpenseDateCell = row.insertCell(5);
+    var categoryColor = categoryColors[Expense.ExpenseCategory] || 'black';
 
     //Assigning the values of the table into the table
     snoCell.innerText = i + 1; 
@@ -402,6 +412,10 @@ function display_Expenses(){
     ExpenseCategoryCell.innerText = Expense.ExpenseCategory;
     ExpenseAmountCell.innerText = Expense.ExpenseAmount;
     ExpenseDateCell.innerText = Expense.ExpenseDate;
+
+    //Populate different colurs for categories
+    ExpenseCategoryCell.style.color = categoryColor;
+
   }
 
 
