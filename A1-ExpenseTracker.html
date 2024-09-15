@@ -1,73 +1,71 @@
 <html>
     <head>
-        <title>Expense Tracker</title>
+        <title>Spend Smart</title>
         <script src="A1-ExpenseTracker.js" defer></script>
         <link rel="stylesheet" href="A1-ExpenseTracker.css">
     </head>
     <body>
         <header>
-            <h1>Expense Tracker</h1>
+            <h1>Spend Smart</h1>
         </header>
+        
+        <!-- Q1: Write code to create nav bar. -->
 
         <nav>
+        <!-- Q1: Create a list item for each tab. 
+        Hiding tabs: Do this after you finish all other features. Use a JS function called showTab to do this. -->
         <button class="homePage button" title="Click for HomePage">HomePage</button>
         <button class="addExpense button" title="Add a new Expense to list">Add New Expense</button>
-        <!-- Q1 Add code to create rest of the navigation buttons-->
-        <button class="removeExpense button" title="Remove Expense from the list">Remove Expense</button>
+        <button class="removeExpense button" title="Delete Expense from the list">Delete Expense</button>
         <button class="updateExpense button" title="Update Expense in the list">Update Expense</button>
-        <button class="viewList button" title="View List">View List</button>
-        <!-- End of Q1-->
+        <button class="viewList button" title="Expense List">Expense List</button>
         </nav>
 
         <div id="homepage" class="landing-page" style='display:none'>
         </div>
 
+        <!-- Q2: Code to create labels and inputs to add an expense. 
+        Give unique HTML id to each, to identify them in JS later. In the JS, add an event listener to submit button. -->
         <div id="addExpenseForm" style="display: none;">
             <p>Enter Expense details:</p>
-            <label for="ExpenseTitle">Expense Title (Max 50 characters)</label>
+            <label for="ExpenseTitle">Title</label>
             <br>
-            <input type="text" id="ExpenseTitle" class="ExpenseTitle" style="width:50%;" maxlength="50">
-            <br>
-
-            <!-- Q2: Write HTML code to create fields to add new Expenses-->
-            <label for="ExpenseDescription">Expense Description (Max 200 characters)</label>
-            <br>
-            <textarea id="ExpenseDescription" class="ExpenseDescription" style="width: 50%" maxlength="200" required></textarea>
+            <input type="text" id="ExpenseTitle" class="ExpenseTitle" style="width:50%;" required>
             <br>
 
-            <label for="ExpenseCategory">Expense Category</label>
+            <label for="ExpenseDescription">Description</label>
             <br>
-            <select id="ExpenseCategory" class="ExpenseCategory" style="width: 50%" required>
-                <option value="Data Structures">Data Structures</option>
-                <option value="Algorithms">Algorithms</option>
-                <option value="Database">Database</option>
-                <option value="Programming Languages">Programming Languages</option>
-                <option value="Web Development">Web Development</option>
-                <option value="System Design">System Design</option>
-            </select>
+            <textarea id="ExpenseDescription" class="ExpenseDescription" style="width: 50%" required></textarea>
             <br>
 
-            <label for="ExpenseComplexity">Expense Complexity</label>
+            <label for="ExpenseCategory">Category</label>
             <br>
-            <select id="ExpenseComplexity" class="ExpenseComplexity" style="width: 30%" required>
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
-            </select>
+            <textarea id="ExpenseCategory" class="ExpenseCategory" style="width: 40%" required></textarea>
             <br>
 
+            <label for="ExpenseAmount">Amount</label>
+            <br>
+            <textarea id="ExpenseAmount" class="ExpenseAmount" style="width: 40%" required></textarea>
+            <br>
+
+            <label for="ExpenseDate">Date</label>
+            <br>
+            <input type="date" id="ExpenseDate" class="ExpenseDate" style="width: 40%" required>
+            <br>
+            <br>
             <button type="button" id = "add" style="background-color: darkslategray;color: whitesmoke;">Add Expense</button>
-            <!-- End of Q2-->
         </div>
 
+         <!-- Q3: Code to update labels and inputs to add an expense identified using the ID. 
+        Give unique HTML id to each, to identify them in JS later. In the JS, add an event listener to submit button.  -->
         <div id="removeExpenseForm" style="display: none;">
             <p>Enter Expense id to remove</p>
-            <!-- Q3: Write HTML code to delete Expenses given their ID-->
             <input type="text" id="ExpenseIdRemove" class="ExpenseIdRemove" placeholder="Enter Expense ID">
             <button type="button" id="remove" style="background-color:red; color:white;">Remove</button>
-            <!-- End of Q3-->
         </div>
 
+        <!-- Q3: Code to delete an expense identified using the ID. 
+        In the JS, add an event listener to submit button.  -->        
         <div id="updateExpenseForm" style="display: none;">
             <p>Enter Expense id to update</p>
             <input type="text" id="ExpenseIdUpdate" class="ExpenseIdUpdate" placeholder="Enter Expense ID">
@@ -75,40 +73,38 @@
             
             <div id="updateFields" style="display: none;">
                 <p>Enter update details for fields that has to be updated and leave the other fields as empty:</p>
-                <label for="newExpenseTitle">New Expense Title</label>
+                <label for="newExpenseTitle">Title</label>
                 <br>
                 <input type="text" id="newExpenseTitle" class="newExpenseTitle" style="width:40%;">
                 <br>
 
-                <label for="newExpenseDescription">New Expense Description</label>
+                <label for="newExpenseDescription">Description</label>
                 <br>
                 <textarea id="newExpenseDescription" class="newExpenseDescription" style="width: 40%" required></textarea>
                 <br>
 
-                <label for="newExpenseCategory">New Expense Category</label>
+                <label for="newExpenseCategory">Category</label>
                 <br>
-                <select id="newExpenseCategory" class="newExpenseCategory" style="width: 30%" required>
-                    <option value="Data Structures">Data Structures</option>
-                    <option value="Algorithms">Algorithms</option>
-                    <option value="Database">Database</option>
-                    <option value="Programming Languages">Programming Languages</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="System Design">System Design</option>
-                </select>
+                <textarea id="newExpenseCategory" class="newExpenseCategory" style="width: 40%" required></textarea>
                 <br>
 
-                <label for="newExpenseComplexity">New Expense Complexity</label>
+                <label for="newExpenseAmount">Amount</label>
                 <br>
-                <select id="newExpenseComplexity" class="newExpenseComplexity" style="width: 20%" required>
-                    <option value="Easy">Easy</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hard">Hard</option>
-                </select>
+                <textarea id="newExpenseAmount" class="newExpenseAmount" style="width: 40%" required></textarea>
                 <br>
+
+                <label for="newExpenseDate">Date</label>
+                <br>
+                <input type="date" id="newExpenseDate" class="newExpenseDate" style="width: 40%" required>
+                <br>
+                <br>
+
                 <button type="button" id="update" style="background-color:rgb(212, 167, 17); color:black;">Update</button>
             </div>
         </div>
 
+        <!-- Q4: Code to display the expenses.
+        Modify the table body from Javascript, as taught in lecture.  -->
         <div id = "list" style="display: none;">
             <table id="list_table">
                 <tr>
@@ -116,9 +112,9 @@
                     <!-- Q4: Write HTML code to Complete the rest of the table header-->
                     <th class="ExpenseTitle">Title</th>
                     <th class="ExpenseDescription">Description</th>
-                    <th class="ExpenseDescription">Amount</th>
                     <th class="ExpenseCategory">Category</th>
-                    <th class="ExpenseComplexity">Date</th>
+                    <th class="ExpenseAmount">Amount</th>
+                    <th class="ExpenseDate">Date</th>
                     <!-- End of Q4-->
                 </tr>
             </table>
