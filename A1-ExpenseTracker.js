@@ -327,7 +327,7 @@ Finally, append the Table element to the "list_table_dom", where list_table_dom 
 */
 function display_Expenses(){
 
-  // Category-specific color mapping (customize as needed)
+  // Category-specific color mapping
   const categoryColors = {
     'Food & Dining': 'red',
     'Housing': 'blue',
